@@ -17,6 +17,6 @@
             <arg name="hardware_interface" value="$(arg hardware_interface)" />
         </include>
 
-        <include file="$(find operation_moveit_configs)/launch/move_group.launch" />
+        <include file="$(find operation_moveit_config)/launch/move_group.launch" />
     </group>
 </launch>

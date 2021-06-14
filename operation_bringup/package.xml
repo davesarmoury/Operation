@@ -12,7 +12,7 @@
 
   <exec_depend>rvizweb</exec_depend>
   <exec_depend>operation_description</exec_depend>
-  <exec_depend>operation_moveit_description</exec_depend>
+  <exec_depend>operation_moveit_config</exec_depend>
   <exec_depend>iiwa_control</exec_depend>
   <exec_depend>iiwa_hw</exec_depend>
   <exec_depend>iiwa_control</exec_depend>
