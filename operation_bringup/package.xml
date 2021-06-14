@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>operation_bringup</name>
+  <version>0.0.0</version>
+  <description>The operation_bringup package</description>
+
+  <maintainer email="davesarmoury@gmail.com">Dave Niewinski</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>rvizweb</exec_depend>
+  <exec_depend>operation_description</exec_depend>
+  <exec_depend>operation_moveit_description</exec_depend>
+  <exec_depend>iiwa_control</exec_depend>
+  <exec_depend>iiwa_hw</exec_depend>
+  <exec_depend>iiwa_control</exec_depend>
+
+  <test_depend>roslaunch</test_depend>
+</package>
