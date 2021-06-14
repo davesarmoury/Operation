@@ -6,7 +6,7 @@
     <include file="$(find operation_description)/launch/description.launch" />
 
     <group ns="$(arg robot_name)">
-        <include file="$(find iiwa_control)/launch/iiwa_control.launch">
+        <include file="$(find operation_bringup)/launch/iiwa_control.launch">
             <arg name="hardware_interface" value="$(arg hardware_interface)" />
             <arg name="controllers" value="joint_state_controller $(arg hardware_interface)_trajectory_controller" />
             <arg name="robot_name" value="$(arg robot_name)" />
@@ -16,7 +16,7 @@
         <include file="$(find iiwa_hw)/launch/iiwa_hw.launch" >
             <arg name="hardware_interface" value="$(arg hardware_interface)" />
         </include>
-
-        <include file="$(find operation_moveit_config)/launch/move_group.launch" />
     </group>
+
+    <include file="$(find operation_moveit_config)/launch/move_group.launch" />
 </launch>
