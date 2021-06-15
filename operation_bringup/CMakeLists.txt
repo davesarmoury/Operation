@@ -21,6 +21,6 @@ install(DIRECTORY launch scripts
 
 if (CATKIN_ENABLE_TESTING)
   find_package(roslaunch REQUIRED)
-  roslaunch_add_file_check(launch/operation.launch)
   roslaunch_add_file_check(launch/iiwa_bringup.launch)
+  roslaunch_add_file_check(launch/iiwa_control.launch)
 endif()
