@@ -90,7 +90,7 @@ install:
   - source devel/setup.bash
   # Add the package under integration to the workspace using a symlink.
   - cd ~/catkin_ws/src
-  - git clone https://github.com/IFL-CAMP/iiwa_stack.git
+  - git clone https://github.com/davesarmoury/iiwa_stack.git
   - ln -s $CI_SOURCE_PATH .
 
 # Install all dependencies, using wstool first and rosdep second.
