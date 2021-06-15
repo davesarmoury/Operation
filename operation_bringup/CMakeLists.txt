@@ -15,7 +15,7 @@ include_directories(
 # ${catkin_INCLUDE_DIRS}
 )
 
-install(DIRECTORY launch
+install(DIRECTORY launch scripts
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
