@@ -5,11 +5,11 @@
     <!-- Everythings is spawned under a namespace with the same name as the robot's. -->
 
     <arg name="hardware_interface" default="PositionJointInterface"/>
-    <arg name="controllers" default="joint_state_controller pos_joint_trajectory_controller"/>
+    <arg name="controllers" default="joint_state_controller PositionJointInterface_trajectory_controller"/>
     <arg name="robot_name" default="iiwa" />
     <arg name="model" default="iiwa7" />
-    <arg name="joint_state_frequency" default="100" />
-    <arg name="robot_state_frequency" default="100" />
+    <arg name="joint_state_frequency" default="50" />
+    <arg name="robot_state_frequency" default="50" />
 
     <!-- Loads joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find iiwa_control)/config/iiwa_control.yaml" command="load" />
@@ -25,6 +25,6 @@
         <param name="publish_frequency" value="$(arg robot_state_frequency)" />
     </node>
 
-    <node name="left_joint_state_relay" type="relay" pkg="topic_tools" args="/$(arg robot_name)/joint_states /joint_states" />
+    <node name="joint_state_relay" type="relay" pkg="topic_tools" args="/$(arg robot_name)/joint_states /joint_states" />
 
 </launch>
