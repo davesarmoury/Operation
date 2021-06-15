@@ -9,14 +9,17 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-
-  <exec_depend>rvizweb</exec_depend>
+  
+  <!-- Removed for travis -->
+  <!-- exec_depend>rvizweb</exec_depend -->
   <exec_depend>operation_description</exec_depend>
   <exec_depend>operation_moveit_config</exec_depend>
   <exec_depend>iiwa_control</exec_depend>
   <exec_depend>iiwa_hw</exec_depend>
   <exec_depend>iiwa_control</exec_depend>
   <exec_depend>topic_tools</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
 
   <test_depend>roslaunch</test_depend>
 </package>
