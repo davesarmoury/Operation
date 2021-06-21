@@ -11,14 +11,12 @@ X_MAX=0.3
 Y_MIN=0.0
 Y_MAX=0.5
 Z_MIN=0.0
-Z_MAZ=0.3
+Z_MAX=0.3
 TILT_MIN=-1.0
 TILT_MAX=1.0
 
-tool_mtx = reset_frame()
-
-lin = 0.1
-rot = 0.1
+MIN_SPEED = 0.002
+MAX_SPEED = 0.1 - MIN_SPEED
 
 def reset_frame():
     return compose_matrix(translate=[0.1,0.3,0.3])
@@ -29,6 +27,11 @@ def update_frame_callback(msg):
     if msg.data.upper() == "HOME":
         tool_mtx = reset_frame()
         return
+
+    scale, shear, angles, translate, perspective = decompose_matrix(tool_mtx)
+    lin = ((translate[2] - Z_MIN)/Z_MAX) * MAX_SPEED + MIN_SPEED
+    rot = lin
+    rospy.loginfo(str(lin))
 
     if msg.data.upper() == "TX+":
         shift = compose_matrix(translate=(lin,0,0))
@@ -70,6 +73,7 @@ def update_frame_callback(msg):
 
 if __name__ == '__main__':
     global tool_mtx
+    tool_mtx = reset_frame()
     rospy.init_node('operation_frame_broadcaster')
     br = tf.TransformBroadcaster()
     tool_mtx = reset_frame()
