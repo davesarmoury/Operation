@@ -57,7 +57,7 @@ def update_frame_callback(msg):
     elif msg.data.upper() == "RET":
         shift = compose_matrix(translate=(0,0,0.1))
     else:
-        rospy.logwarn("Invalid command " + str(msg.data))
+        rospy.logdebug("Not a frame command " + str(msg.data))
         return
 
     tmp_mtx = numpy.matmul(tool_mtx, shift)

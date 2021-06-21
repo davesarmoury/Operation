@@ -67,6 +67,7 @@ if __name__ == '__main__':
     rospy.Subscriber("vote_result", String, update_gripper_callback)
     pub = rospy.Publisher('/Robotiq2FGripperRobotOutput', Robotiq2FGripper_robot_output, queue_size=10)
 
+    rospy.sleep(3.0)
     pub.publish(resetMsg())
     rospy.sleep(1.0)
     pub.publish(activateMsg())
