@@ -31,8 +31,7 @@ def update_frame_callback(msg):
     scale, shear, angles, translate, perspective = decompose_matrix(tool_mtx)
     lin = ((translate[2] - Z_MIN)/Z_MAX) * MAX_SPEED + MIN_SPEED
     rot = lin
-    rospy.loginfo(str(lin))
-
+    
     if msg.data.upper() == "TX+":
         shift = compose_matrix(translate=(lin,0,0))
     elif msg.data.upper() == "TX-":
