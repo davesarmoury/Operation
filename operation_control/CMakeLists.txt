@@ -23,6 +23,7 @@ install(PROGRAMS
   scripts/frame_transformer.py
   scripts/action_coordinator.py
   scripts/arm_controller.py
+  scripts/gripper_controller.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

@@ -1,3 +1,6 @@
 <launch>
-
+  <node pkg="operation_control" type="action_coordinator.py" name="action_coordinator" />
+  <node pkg="operation_control" type="arm_controller.py" name="arm_controller" />
+  <node pkg="operation_control" type="frame_transformer.py" name="frame_transformer" />
+  <node pkg="operation_control" type="gripper_controller.py" name="gripper_controller" />
 </launch>
