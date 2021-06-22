@@ -63,7 +63,11 @@ env:
     # Set the python path manually to include /usr/-/python2.7/dist-packages
     # as this is where apt-get installs python packages.
     - PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages:/usr/local/lib/python2.7/dist-packages
-
+    - TWITCH_USERNAME=dummy
+    - TWITCH_CLIENT_ID=dummy
+    - TWITCH_TOKEN=dummy
+    - TWITCH_CHANNEL=dummy
+    
 ################################################################################
 
 # Install system dependencies, namely a very barebones ROS setup.
@@ -91,7 +95,7 @@ install:
   # Add the package under integration to the workspace using a symlink.
   - cd ~/catkin_ws/src
   - git clone https://github.com/davesarmoury/iiwa_stack.git
-  - git clone https://github.com/osrf/rvizweb/
+  - git clone https://github.com/davesarmoury/twitch_chat_ros.git
   - ln -s $CI_SOURCE_PATH .
 
 # Install all dependencies, using wstool first and rosdep second.

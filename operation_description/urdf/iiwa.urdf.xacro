@@ -14,4 +14,26 @@
     <origin xyz="$(arg origin_xyz)" rpy="$(arg origin_rpy)" />
   </xacro:iiwa7>
 
+  <link name="grip_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://operation_description/meshes/HandESmall.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="grip_joint" type="fixed">
+    <parent link="iiwa_link_ee" />
+    <child link="grip_link" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="tweeze_tips" />
+
+  <joint name="tweeze_joint" type="fixed">
+    <parent link="grip_link" />
+    <child link="tweeze_tips" />
+    <origin xyz="-0.01768 0.00131 0.20735" rpy="0 2.87979 0"/>
+  </joint>
+
 </robot>

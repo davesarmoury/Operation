@@ -1,4 +1,5 @@
 <launch>
   <include file="$(find operation_bringup)/launch/iiwa_bringup.launch" />
   <include file="$(find operation_bringup)/launch/web.launch" />
+  <include file="$(find operation_bringup)/launch/gripper.launch" />
 </launch>
