@@ -17,6 +17,8 @@ TILT_MAX=1.0
 
 MIN_SPEED = 0.002
 MAX_SPEED = 0.1 - MIN_SPEED
+MIN_ROT = 0.002
+MAX_ROT = 0.1 - MIN_ROT
 
 def reset_frame():
     return compose_matrix(translate=[0.1,0.3,0.3])
@@ -30,7 +32,7 @@ def update_frame_callback(msg):
 
     scale, shear, angles, translate, perspective = decompose_matrix(tool_mtx)
     lin = ((translate[2] - Z_MIN)/Z_MAX) * MAX_SPEED + MIN_SPEED
-    rot = lin
+    rot = ((translate[2] - Z_MIN)/Z_MAX) * MAX_ROT + MIN_ROT
     
     if msg.data.upper() == "TX+":
         shift = compose_matrix(translate=(lin,0,0))
