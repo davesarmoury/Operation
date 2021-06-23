@@ -7,21 +7,21 @@ import tf
 import numpy
 
 X_MIN=-0.1
-X_MAX=0.3
-Y_MIN=0.0
-Y_MAX=0.5
-Z_MIN=0.0
+X_MAX=0.5
+Y_MIN=0.1
+Y_MAX=0.7
+Z_MIN=0.023
 Z_MAX=0.3
 TILT_MIN=-1.0
 TILT_MAX=1.0
 
-MIN_SPEED = 0.002
+MIN_SPEED = 0.001
 MAX_SPEED = 0.1 - MIN_SPEED
-MIN_ROT = 0.002
-MAX_ROT = 0.1 - MIN_ROT
+MIN_ROT = 0.005
+MAX_ROT = 0.3 - MIN_ROT
 
 def reset_frame():
-    return compose_matrix(translate=[0.1,0.3,0.3])
+    return compose_matrix(translate=[0.3,0.4,0.2])
 
 def update_frame_callback(msg):
     global tool_mtx
@@ -33,7 +33,7 @@ def update_frame_callback(msg):
     scale, shear, angles, translate, perspective = decompose_matrix(tool_mtx)
     lin = ((translate[2] - Z_MIN)/Z_MAX) * MAX_SPEED + MIN_SPEED
     rot = ((translate[2] - Z_MIN)/Z_MAX) * MAX_ROT + MIN_ROT
-    
+
     if msg.data.upper() == "TX+":
         shift = compose_matrix(translate=(lin,0,0))
     elif msg.data.upper() == "TX-":

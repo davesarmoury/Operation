@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 import rospy
+import copy
 import moveit_commander
 import moveit_msgs.msg
-import geometry_msgs.msg
+from geometry_msgs.msg import Pose
 from moveit_commander.conversions import pose_to_list
 import time
 import math
@@ -23,7 +24,7 @@ def getCartPath(group, trans, rot):
 
     waypoints.append(copy.deepcopy(tool_pose))
 
-    (plan, fraction) = group.compute_cartesian_path(waypoints, 0.005, 0.0)
+    (plan, fraction) = group.compute_cartesian_path(waypoints, 0.002, 0.0)
 
     return plan, fraction
 
@@ -34,31 +35,16 @@ def main():
 
     listener = tf.TransformListener()
 
-    # We can get the name of the reference frame for this robot:
-    planning_frame = group.get_planning_frame()
-    print "============ Reference frame: %s" % planning_frame
-
-    # We can also print the name of the end-effector link for this group:
-    eef_link = group.get_end_effector_link()
-    print "============ End effector: %s" % eef_link
-
-    # We can get a list of all the groups in the robot:
-    group_names = robot.get_group_names()
-    print "============ Robot Groups:", robot.get_group_names()
-
-    # Sometimes for debugging it is useful to print the entire state of the
-    # robot:
-    print "============ Printing robot state"
-    print robot.get_current_state()
-    print ""
-
     group.set_max_velocity_scaling_factor(0.5)
     group.set_max_acceleration_scaling_factor(0.5)
 
+    group.go([0.5, 0, 0, -1.5, 0, 1.5, 0.5], wait=True)
+    group.stop()
+
     r = rospy.Rate(1)
     while not rospy.is_shutdown():
-        waitForTransform('/operation_tool', '/world', rospy.Time(0), rospy.Duration(0.5))
-        (trans, rot) = listener.lookupTransform('/operation_tool', '/world', rospy.Time(0))
+        listener.waitForTransform('world', 'operation_tool', rospy.Time(0), rospy.Duration(0.5))
+        trans, rot = listener.lookupTransform('world', 'operation_tool', rospy.Time(0))
 
         plan, fraction = getCartPath(group, trans, rot)
         if fraction > 0.95:
@@ -69,5 +55,5 @@ def main():
 
     group.stop()
 
-    if __name__ == '__main__':
-        main()
+if __name__ == '__main__':
+    main()

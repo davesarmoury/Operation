@@ -8,8 +8,8 @@
     <arg name="controllers" default="joint_state_controller PositionJointInterface_trajectory_controller"/>
     <arg name="robot_name" default="iiwa" />
     <arg name="model" default="iiwa7" />
-    <arg name="joint_state_frequency" default="50" />
-    <arg name="robot_state_frequency" default="50" />
+    <arg name="joint_state_frequency" default="40" />
+    <arg name="robot_state_frequency" default="40" />
 
     <!-- Loads joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find iiwa_control)/config/iiwa_control.yaml" command="load" />

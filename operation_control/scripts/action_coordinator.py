@@ -18,6 +18,7 @@ def callback(msg):
 def main():
     global register
     pub = rospy.Publisher('vote_result', String, queue_size=10)
+    pub2 = rospy.Publisher('send_msg', String, queue_size=10)
     rospy.Subscriber('received_message', twitch_message, callback)
 
     rospy.init_node('vote_coordinator', anonymous=True)
@@ -40,6 +41,8 @@ def main():
                 rospy.logdebug(str(vote_tally))
                 result = max(vote_tally.iteritems(), key=operator.itemgetter(1))[0]
                 rospy.loginfo(str(result) + " <" + str(vote_tally[result]) + ">")
+                pub.publish(str(result))
+                pub2.publish(str(result) + " wins!  " + str(vote_seconds) + " seconds until next vote")
             next_election = rospy.Time.now() + rospy.Duration(vote_seconds)
 
         rate.sleep()
