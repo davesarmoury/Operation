@@ -8,9 +8,9 @@ CLOSE = 255
 SPEED = 10
 FORCE = 5
 
-def halfOpenMsg():
+def partOpenMsg(amount):
     msg = openMsg()
-    msg.rPR = int((OPEN + CLOSE)/2)
+    msg.rPR = int(OPEN + (CLOSE - OPEN) * amount)
     return msg
 
 def closeMsg():
@@ -56,9 +56,34 @@ def update_gripper_callback(msg):
     if msg.data.upper() == "GC":
         pub.publish(resetMsg())
         pub.publish(closeMsg())
-    if msg.data.upper() == "GH":
+    if msg.data.upper() == "G1":
         pub.publish(resetMsg())
-        pub.publish(halfOpenMsg())
+        pub.publish(partOpenMsg(0.1))
+    if msg.data.upper() == "G2":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.2))
+    if msg.data.upper() == "G3":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.3))
+    if msg.data.upper() == "G4":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.4))
+    if msg.data.upper() == "G5":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.5))
+    if msg.data.upper() == "G6":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.6))
+    if msg.data.upper() == "G7":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.7))
+    if msg.data.upper() == "G8":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.8))
+    if msg.data.upper() == "G9":
+        pub.publish(resetMsg())
+        pub.publish(partOpenMsg(0.9))
+
 
 if __name__ == '__main__':
     global pub

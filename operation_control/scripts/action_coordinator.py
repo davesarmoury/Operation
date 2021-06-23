@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from twitch_chat_ros.msg import twitch_message
 
 vote_seconds = 6
-VALID_COMMANDS = ["GO","GC","GH","TX+","TX-","TY+","TY-","TZ+","TZ-","RX+","RX-","RY+","RY-","RZ+","RZ-"]
+VALID_COMMANDS = ["GO","GC","G1","G2","G3","G4","G5","G6","G7","G8","G9","TX+","TX-","TY+","TY-","TZ+","TZ-","RX+","RX-","RY+","RY-","RZ+","RZ-"]
 register = {}
 
 def callback(msg):
