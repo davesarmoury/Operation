@@ -12,8 +12,8 @@ register = {}
 def callback(msg):
     global register
     if len(msg.arguments) == 1:
-        if msg.arguments[0] in VALID_COMMANDS:
-            register[msg.tags.display_name] = msg.arguments[0]
+        if msg.arguments[0].upper() in VALID_COMMANDS:
+            register[msg.tags.display_name] = msg.arguments[0].upper()
 
 def main():
     global register

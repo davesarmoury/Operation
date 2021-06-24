@@ -49,7 +49,7 @@ def update_gripper_callback(msg):
     global pub
     if msg.data.upper() == "RET":
         pub.publish(resetMsg())
-        pub.publish(halfOpenMsg())
+        pub.publish(partOpenMsg(0.5))
     if msg.data.upper() == "GO":
         pub.publish(resetMsg())
         pub.publish(openMsg())
