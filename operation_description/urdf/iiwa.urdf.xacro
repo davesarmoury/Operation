@@ -14,6 +14,45 @@
     <origin xyz="$(arg origin_xyz)" rpy="$(arg origin_rpy)" />
   </xacro:iiwa7>
 
+  <link name="table_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://operation_description/meshes/Table.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="table_joint" type="fixed">
+    <parent link="world" />
+    <child link="table_link" />
+  </joint>
+
+  <link name="game_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://operation_description/meshes/Game.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="game_joint" type="fixed">
+    <parent link="world" />
+    <child link="game_link" />
+  </joint>
+
+  <link name="wall_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://operation_description/meshes/Wall.dae" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="wall_joint" type="fixed">
+    <parent link="world" />
+    <child link="wall_link" />
+  </joint>
+
   <link name="grip_link">
     <visual>
       <geometry>
